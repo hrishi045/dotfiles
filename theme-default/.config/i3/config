@@ -179,6 +179,8 @@ bindsym XF86MonBrightnessDown exec light -U 2
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id "compton -cC"
 exec_always --no-startup-id "nm-applet"
+exec_always --no-startup-id "polkit-gnome"
+exec --no-startup-id "$HOME/scripts/toggle_between_monitors"
 exec --no-startup-id "tap_to_click"
 exec_always --no-startup-id "nitrogen --restore &"
 #exec --no-startup-id "toggle_between_monitors"

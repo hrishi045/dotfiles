@@ -12,7 +12,7 @@ setopt COMPLETE_ALIASES
 bindkey -e
 bindkey '^[[1;5C' emacs-forward-word
 bindkey '^[[1;5D' emacs-backward-word
- 
+
 ## === Arch-specific ===
 
 # Pacman
@@ -23,11 +23,27 @@ alias pacupd='sudo pacman -Syy'
 alias pacls='pacman -Ql'
 
 function paclist() {
-    LC_ALL=C pacman -Qei $(pacman -Qu | cut -d " " -f 1) | \
-    awk 'BEGIN {FS=":"} /^Name/{printf("\033[1;36m%s\033[1;37m", $2)} /^Description/{print $2}'
-}
+	LC_ALL=C pacman -Qei $(pacman -Qu | cut -d " " -f 1) | \
+		awk 'BEGIN {FS=":"} /^Name/{printf("\033[1;36m%s\033[1;37m", $2)} /^Description/{print $2}'
+	}
 
 # Yay
 alias yain='yay -S'
 
+# FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Path
+PATH="$PATH:$HOME/.cargo/bin"
+PATH="$PATH:$HOME/.local/bin"
+PATH="$PATH:$HOME/.npm-global/bin"
+PATH="$PATH:$HOME/.yarn/bin"
+PATH="$PATH:$HOME/scripts"
+export PATH
+
+# Vars
+export GEM_HOME=$HOME/.gem
+export EDITOR="nvim"
+export BROWSER="chromium"
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
+
